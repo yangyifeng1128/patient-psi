@@ -1,0 +1,28 @@
+
+# misc
+.DS_Store
+*.pem
+
+# python
+__pycache__/
+.venv/
+
+# node.js
+node_modules/
+
+# next.js
+.next/
+out/
+build/
+
+# turbo
+.turbo/
+
+# vercel
+.vercel/
+
+# envs
+.env*
+.env*.local
+!.env.example
+!python/.env

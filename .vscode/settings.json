@@ -1,0 +1,42 @@
+{
+  "_comment_for_editor": "// 编辑器",
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "editor.fontFamily": "JetBrains Mono",
+  "editor.formatOnSave": true,
+
+  "_comment_for_git": "// Git",
+
+  "git.openRepositoryInParentFolders": "never",
+
+  "_comment_for_vscode-icons-team.vscode-icons": "// 图标",
+
+  "workbench.iconTheme": "vscode-icons",
+
+  "_comment_for_typescript": "// TypeScript",
+
+  "typescript.tsdk": "./node_modules/typescript/lib",
+
+  "_comment_for_bradlc.vscode-tailwindcss": "// Tailwind",
+
+  "editor.quickSuggestions": {
+    "strings": "on"
+  },
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
+    ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ],
+  "tailwindCSS.experimental.configFile": "packages/ui/styles/globals.css"
+}
