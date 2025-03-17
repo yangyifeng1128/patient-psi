@@ -2,28 +2,24 @@ import 'server-only'
 
 import {
   createAI,
-  getMutableAIState,
+  createStreamableValue,
   getAIState,
-  render,
-  createStreamableValue
+  getMutableAIState,
+  render
 } from 'ai/rsc'
 import OpenAI from 'openai'
 
-import {
-  nanoid
-} from '@/lib/utils'
 import { saveChat } from '@/app/actions'
-import { SpinnerMessage, UserMessage, BotMessage } from '@/components/message'
-import { Chat } from '@/lib/types'
 import { auth } from '@/auth'
+import { BotMessage, SpinnerMessage, UserMessage } from '@/components/message'
+import { Chat } from '@/lib/types'
+import { nanoid } from '@/lib/utils'
 
 import { getPrompt } from '@/app/api/getDataFromKV'
-
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY || ''
 })
-
 
 async function submitUserMessage(content: string, type: string) {
   'use server'
@@ -37,7 +33,7 @@ async function submitUserMessage(content: string, type: string) {
       {
         id: nanoid(),
         role: 'user',
-        content,
+        content
       }
     ]
   })
@@ -75,7 +71,7 @@ async function submitUserMessage(content: string, type: string) {
             {
               id: nanoid(),
               role: 'assistant',
-              content,
+              content
             }
           ]
         })
@@ -94,7 +90,7 @@ async function submitUserMessage(content: string, type: string) {
 }
 
 export type Message = {
-  role: 'user' | 'assistant' | 'system' | 'data'
+  role: 'system' | 'user' | 'assistant' | 'function' | 'data' | 'tool'
   content: string
   id: string
   name?: string
@@ -116,7 +112,7 @@ export const AI = createAI<AIState, UIState>({
   },
   initialUIState: [],
   initialAIState: { chatId: nanoid(), messages: [] },
-  unstable_onGetUIState: async () => {
+  onGetUIState: async () => {
     'use server'
 
     const session = await auth()
@@ -125,14 +121,14 @@ export const AI = createAI<AIState, UIState>({
       const aiState = getAIState()
 
       if (aiState) {
-        const uiState = getUIStateFromAIState(aiState)
+        const uiState = getUIStateFromAIState(aiState as Chat)
         return uiState
       }
     } else {
       return
     }
   },
-  unstable_onSetAIState: async ({ state, done }) => {
+  onSetAIState: async ({ state, done }) => {
     'use server'
 
     const session = await auth()
