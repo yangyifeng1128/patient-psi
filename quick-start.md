@@ -3,7 +3,7 @@
 ## 1. 克隆项目代码
 
 ```sh
-git clone https://github.com/ruiyiw/patient-psi.git
+git clone https://github.com/yangyifeng1128/patient-psi.git
 cd patient-psi
 ```
 
