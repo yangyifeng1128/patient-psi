@@ -7,14 +7,8 @@ import { Chat } from '@/components/chat';
 import { AI } from '@/lib/chat/actions';
 import { Session } from '@/lib/types';
 
-export interface ChatPageProps {
-  params: {
-    id: string;
-  };
-}
-
-export async function generateMetadata({ params }: ChatPageProps): Promise<Metadata> {
-  const { id } = await params;
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
 
   const session = await auth();
   const userId = session?.user?.id;
@@ -23,23 +17,23 @@ export async function generateMetadata({ params }: ChatPageProps): Promise<Metad
     return {};
   }
 
-  const chat = await getChat(id, userId);
+  const chat = await getChat(slug, userId);
   return {
     title: chat?.title.toString().slice(0, 50) ?? 'Chat',
   };
 }
 
-export default async function ChatPage({ params }: ChatPageProps) {
-  const { id } = await params;
+export default async function ChatPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const session = (await auth()) as Session;
   const missingKeys = await getMissingKeys();
 
   if (!session?.user) {
-    redirect(`/login?next=/chat/${id}`);
+    redirect(`/login?next=/chat/${slug}`);
   }
 
   const userId = session.user.id as string;
-  const chat = await getChat(id, userId);
+  const chat = await getChat(slug, userId);
 
   if (!chat) {
     redirect('/');

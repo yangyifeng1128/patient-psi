@@ -32,15 +32,6 @@ const config = [
 
     extends: ['next', 'next/core-web-vitals', 'next/typescript', 'prettier'],
 
-    // 参考资料：
-    // - https://nextjs.org/docs/app/api-reference/config/eslint#specifying-a-root-directory-within-a-monorepo
-
-    settings: {
-      next: {
-        rootDir: ['apps/*/', 'packages/*/'],
-      },
-    },
-
     rules: {
       '@typescript-eslint/no-unused-vars': ['warn', {}],
       'react/jsx-no-literals': 'warn',

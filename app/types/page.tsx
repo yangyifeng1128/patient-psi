@@ -5,14 +5,7 @@ import { Session } from '@/lib/types';
 import { nanoid } from '@/lib/utils';
 import { getMissingKeys } from '../actions';
 
-export interface ChatPageProps {
-  params: {
-    id: string;
-    patient_type: string;
-  };
-}
-
-export default async function ChatPage({}: ChatPageProps) {
+export default async function ChatPage() {
   const id = nanoid();
   const session = (await auth()) as Session;
   const missingKeys = await getMissingKeys();
