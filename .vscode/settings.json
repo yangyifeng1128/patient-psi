@@ -48,7 +48,7 @@
     ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
     ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
   ],
-  "tailwindCSS.experimental.configFile": "packages/ui/styles/globals.css",
+  "tailwindCSS.experimental.configFile": "tailwind.config.ts",
 
   "_comment_for_Lokalise.i18n-ally": "// i18n",
 

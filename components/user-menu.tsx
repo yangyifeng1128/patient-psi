@@ -1,9 +1,11 @@
+import { useTranslations } from 'next-intl';
+
 import { signOut } from '@/auth';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuItem,
+  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
@@ -19,6 +21,8 @@ function getUserInitials(name: string) {
 }
 
 export function UserMenu({ user }: UserMenuProps) {
+  const t = useTranslations('components.userMenu.data');
+
   return (
     <div className="flex items-center justify-between">
       <DropdownMenu>
@@ -31,9 +35,7 @@ export function UserMenu({ user }: UserMenuProps) {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="start" className="w-fit" sideOffset={8}>
-          <DropdownMenuItem className="flex-col items-start">
-            <div className="text-xs text-zinc-500">{user.id}</div>
-          </DropdownMenuItem>
+          <DropdownMenuLabel className="font-normal">{user.id}</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <form
             action={async () => {
@@ -41,9 +43,9 @@ export function UserMenu({ user }: UserMenuProps) {
               await signOut();
             }}
           >
-            <button className="relative flex w-full cursor-pointer select-none items-center rounded-sm px-2 py-1.5 text-xs outline-none transition-colors hover:bg-red-500 hover:text-white focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
-              {'Sign Out'}
-            </button>
+            <Button className="w-full font-normal" variant="ghost">
+              {t('signOut')}
+            </Button>
           </form>
         </DropdownMenuContent>
       </DropdownMenu>

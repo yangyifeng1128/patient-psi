@@ -18,6 +18,18 @@
       "data": {
         "submitAndReviewAnswers": "提交并查看答案"
       }
+    },
+    "patientTypeMenu": {
+      "metadata": {},
+      "data": {
+        "startConversation": "开始对话"
+      }
+    },
+    "userMenu": {
+      "metadata": {},
+      "data": {
+        "signOut": "退出登录"
+      }
     }
   }
 }

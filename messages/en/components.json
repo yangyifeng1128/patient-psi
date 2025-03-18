@@ -18,6 +18,18 @@
       "data": {
         "submitAndReviewAnswers": "Submit and review answers"
       }
+    },
+    "patientTypeMenu": {
+      "metadata": {},
+      "data": {
+        "startConversation": "Start conversation"
+      }
+    },
+    "userMenu": {
+      "metadata": {},
+      "data": {
+        "signOut": "Sign out"
+      }
     }
   }
 }

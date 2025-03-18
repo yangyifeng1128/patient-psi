@@ -37,7 +37,7 @@ async function UserOrLogin() {
           </Button>
         )}
       </div>
-      <LocaleControlCombobox />
+      <LocaleControlCombobox buttonProps={{ className: 'font-normal' }} />
     </>
   );
 }

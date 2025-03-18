@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react';
 
+import { useTranslations } from 'next-intl';
+
 import { initialProfile, PatientProfile } from '@/app/api/data/patient-profiles';
 import { patientTypeDescriptions, patientTypes } from '@/app/api/data/patient-types';
 import { Button } from '@/components/ui/button';
@@ -43,7 +45,7 @@ const PatientTypeDropdownList: React.FC<PatientTypeListProps> = ({ typeList, sel
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="relative flex h-[35px] w-[190px] items-center gap-x-1.5 rounded-md bg-background py-1.5 pl-3 pr-10 text-left text-sm font-semibold text-gray-900 shadow-sm ring-2 ring-inset ring-gray-900 hover:bg-accent hover:text-accent-foreground dark:text-white dark:ring-white">
+        <Button className="relative flex w-[10rem] items-center gap-x-1.5 rounded-md bg-background py-1.5 pl-3 pr-10 text-left text-sm font-semibold text-gray-900 shadow-sm ring-2 ring-inset ring-gray-900 hover:bg-accent hover:text-accent-foreground dark:text-white dark:ring-white">
           <div className="grow text-left">{selectedType}</div>
           <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
             <svg aria-hidden="true" className="-mr-1 size-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
@@ -79,6 +81,8 @@ interface PatientTypeMenuProps {
 }
 
 export function PatientTypeMenu({ onStartedChange, onSetPatientProfile }: PatientTypeMenuProps) {
+  const t = useTranslations('components.patientTypeMenu.data');
+
   const patientTypeListValues: string[] = patientTypes.map(({ type }) => type);
 
   const [selectedType, setSelectedType] = useState('Client Types');
@@ -162,12 +166,9 @@ export function PatientTypeMenu({ onStartedChange, onSetPatientProfile }: Patien
                 <p className="block pt-5 font-medium leading-6">{selectedTypeDescription}</p>
                 {!isStarted && (
                   <div className="block pt-5">
-                    <button
-                      className="flex h-[35px] w-[155px] items-center justify-center rounded-md bg-green-500 text-sm font-semibold text-white"
-                      onClick={handleStartButtonClick}
-                    >
-                      {'Start conversation'}
-                    </button>
+                    <Button className="w-[10rem]" onClick={handleStartButtonClick}>
+                      {t('startConversation')}
+                    </Button>
                   </div>
                 )}
               </div>
