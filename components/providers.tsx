@@ -3,7 +3,7 @@
 import { ThemeProvider } from 'next-themes';
 
 import { TooltipProvider } from '@/components/ui/tooltip';
-import { SidebarProvider } from '@/lib/hooks/use-sidebar';
+import { SidebarProvider } from '@/hooks/use-sidebar';
 
 export function Providers({ children, ...props }: React.ComponentPropsWithoutRef<typeof ThemeProvider>) {
   return (

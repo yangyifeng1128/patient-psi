@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 import { buttonVariants } from '@/components/ui/button';
 import { IconMessage, IconUsers } from '@/components/ui/icons';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import { useLocalStorage } from '@/lib/hooks/use-local-storage';
+import { useLocalStorage } from '@/hooks/use-local-storage';
 import { type Chat } from '@/lib/types';
 import { cn } from '@/lib/utils';
 

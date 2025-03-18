@@ -5,7 +5,7 @@ import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 
 import { IconOpenAI, IconUser } from '@/components/ui/icons';
-import { useStreamableText } from '@/lib/hooks/use-streamable-text';
+import { useStreamableText } from '@/hooks/use-streamable-text';
 import { cn } from '@/lib/utils';
 import { MemoizedReactMarkdown } from './markdown';
 import { spinner } from './spinner';

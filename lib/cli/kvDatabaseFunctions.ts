@@ -1,30 +1,12 @@
 import { readFile } from 'fs/promises';
 import path from 'path';
 
-// Rest of your code
-
 import { kv } from '@vercel/kv';
 import dotenv from 'dotenv';
 
 dotenv.config({ path: '.env.local' });
 
-async function storeDataToKV() {
-  try {
-    const dataFilePath = path.join(process.cwd(), 'python/data', 'profiles.json');
-    const jsonData = JSON.parse(await readFile(dataFilePath, 'utf8'));
-
-    for (const profile of jsonData) {
-      const id = profile.id;
-      const key = `profile_${id}`;
-
-      await kv.set(key, JSON.stringify(profile));
-      console.log(`Data for ${id} stored successfully with key ${key}`);
-    }
-  } catch (error) {
-    console.error('Error storing data to KV:', error);
-  }
-}
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function deleteAllProfilesFromKV() {
   try {
     const dataFilePath = path.join(process.cwd(), 'app/api/data', 'profiles_8.json');
@@ -44,6 +26,7 @@ async function deleteAllProfilesFromKV() {
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function deleteCustomPrefixFromKV(prefix: string) {
   try {
     const keys = await kv.keys(prefix);
@@ -57,12 +40,30 @@ async function deleteCustomPrefixFromKV(prefix: string) {
   }
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function assignParticipantSessions(userId: string, sessions: string[]) {
   const key = `assigned:${userId}`;
   const value = {
     sessions: sessions,
   };
   await kv.set(key, JSON.stringify(value));
+}
+
+async function storeDataToKV() {
+  try {
+    const dataFilePath = path.join(process.cwd(), 'python/data', 'profiles.json');
+    const jsonData = JSON.parse(await readFile(dataFilePath, 'utf8'));
+
+    for (const profile of jsonData) {
+      const id = profile.id;
+      const key = `profile_${id}`;
+
+      await kv.set(key, JSON.stringify(profile));
+      console.log(`Data for ${id} stored successfully with key ${key}`);
+    }
+  } catch (error) {
+    console.error('Error storing data to KV:', error);
+  }
 }
 
 storeDataToKV();

@@ -9,8 +9,8 @@ import Textarea from 'react-textarea-autosize';
 import { Button } from '@/components/ui/button';
 import { IconArrowElbow } from '@/components/ui/icons';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { useEnterSubmit } from '@/hooks/use-enter-submit';
 import { type AI } from '@/lib/chat/actions';
-import { useEnterSubmit } from '@/lib/hooks/use-enter-submit';
 import { UserMessage } from './message';
 import { Stopwatch } from './stopwatch';
 

@@ -15,7 +15,7 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { IconSpinner } from '@/components/ui/icons';
-import { useCopyToClipboard } from '@/lib/hooks/use-copy-to-clipboard';
+import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard';
 import { ServerActionResult, type Chat } from '@/lib/types';
 
 interface ChatShareDialogProps extends DialogProps {
@@ -63,12 +63,10 @@ export function ChatShareDialog({ chat, shareChat, onCopy, ...props }: ChatShare
             onClick={() => {
               startShareTransition(async () => {
                 const result = await shareChat(chat.id);
-
                 if (result && 'error' in result) {
-                  toast.error(result.error);
+                  toast.error(result.error as string);
                   return;
                 }
-
                 copyShareLink(result);
               });
             }}

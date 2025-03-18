@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { IconSidebar } from '@/components/ui/icons';
-import { useSidebar } from '@/lib/hooks/use-sidebar';
+import { useSidebar } from '@/hooks/use-sidebar';
 
 export function SidebarToggle() {
   const { toggleSidebar } = useSidebar();

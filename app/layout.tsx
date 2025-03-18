@@ -39,12 +39,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html lang="en" suppressHydrationWarning>
       <body className={cn('font-sans antialiased', GeistSans.variable, GeistMono.variable)}>
         <Toaster position="top-center" />
-        <Providers
-          attribute="class"
-          defaultTheme="light"
-          // enableSystem
-          disableTransitionOnChange
-        >
+        <Providers attribute="class" defaultTheme="light" disableTransitionOnChange>
           <div className="flex min-h-screen flex-col">
             <Header />
             <main className="flex flex-1 flex-col bg-muted/50">{children}</main>
