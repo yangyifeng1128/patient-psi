@@ -1,0 +1,23 @@
+{
+  "components": {
+    "chatHistory": {
+      "metadata": {},
+      "data": {
+        "chatHistory": "对话记录",
+        "newChat": "新对话"
+      }
+    },
+    "clearHistory": {
+      "metadata": {},
+      "data": {
+        "clearHistory": "清除记录"
+      }
+    },
+    "diagramList": {
+      "metadata": {},
+      "data": {
+        "submitAndReviewAnswers": "提交并查看答案"
+      }
+    }
+  }
+}

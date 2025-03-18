@@ -1,0 +1,23 @@
+{
+  "components": {
+    "chatHistory": {
+      "metadata": {},
+      "data": {
+        "chatHistory": "Chat history",
+        "newChat": "New chat"
+      }
+    },
+    "clearHistory": {
+      "metadata": {},
+      "data": {
+        "clearHistory": "Clear history"
+      }
+    },
+    "diagramList": {
+      "metadata": {},
+      "data": {
+        "submitAndReviewAnswers": "Submit and review answers"
+      }
+    }
+  }
+}

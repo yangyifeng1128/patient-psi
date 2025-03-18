@@ -22,3 +22,17 @@ uv pip install -r requirements.txt
 pnpm i -g vercel
 pnpm i -g ts-node
 ```
+
+## 4. 下载 Vercel 环境变量
+
+```sh
+vercel env pull .env.local
+```
+
+## 5. 上传环境变量至 Vercel
+
+```sh
+vercel env add AUTH_SECRET
+vercel env add AZURE_API_KEY
+vercel env add AZURE_RESOURCE_NAME
+```

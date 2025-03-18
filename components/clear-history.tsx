@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 
+import { useTranslations } from 'next-intl';
 import { toast } from 'sonner';
 
 import {
@@ -25,6 +26,8 @@ interface ClearHistoryProps {
 }
 
 export function ClearHistory({ isEnabled = false, clearChats }: ClearHistoryProps) {
+  const t = useTranslations('components.clearHistory.data');
+
   const [open, setOpen] = React.useState(false);
   const [isPending, startTransition] = React.useTransition();
 
@@ -33,7 +36,7 @@ export function ClearHistory({ isEnabled = false, clearChats }: ClearHistoryProp
       <AlertDialogTrigger asChild>
         <Button disabled={!isEnabled || isPending} variant="ghost">
           {isPending && <IconSpinner className="mr-2" />}
-          {'Clear history'}
+          {t('clearHistory')}
         </Button>
       </AlertDialogTrigger>
       <AlertDialogContent>

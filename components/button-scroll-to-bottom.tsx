@@ -1,29 +1,30 @@
 'use client';
 
-import { Button, type ButtonProps } from '@/components/ui/button';
-import { IconArrowDown } from '@/components/ui/icons';
+import { ComponentPropsWithRef } from 'react';
+
+import { ArrowDownToLineIcon } from 'lucide-react';
+
+import { IconButton } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
-interface ButtonScrollToBottomProps extends ButtonProps {
+interface ButtonScrollToBottomProps extends ComponentPropsWithRef<typeof IconButton> {
   isAtBottom: boolean;
   scrollToBottom: () => void;
 }
 
 export function ButtonScrollToBottom({ className, isAtBottom, scrollToBottom, ...props }: ButtonScrollToBottomProps) {
   return (
-    <Button
+    <IconButton
       className={cn(
-        'absolute right-4 top-1 z-10 bg-background transition-opacity duration-300 sm:right-8 md:top-2',
+        'absolute right-4 top-1 z-10 rounded-full bg-background transition-opacity duration-300 sm:right-8 md:top-2',
         isAtBottom ? 'opacity-0' : 'opacity-100',
         className,
       )}
       onClick={() => scrollToBottom()}
-      size="icon"
       variant="outline"
       {...props}
     >
-      <IconArrowDown />
-      <span className="sr-only">{'Scroll to bottom'}</span>
-    </Button>
+      <ArrowDownToLineIcon />
+    </IconButton>
   );
 }

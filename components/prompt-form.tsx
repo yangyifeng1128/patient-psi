@@ -3,11 +3,11 @@
 import * as React from 'react';
 
 import { useActions, useUIState } from 'ai/rsc';
+import { CornerDownLeftIcon } from 'lucide-react';
 import { nanoid } from 'nanoid';
 import Textarea from 'react-textarea-autosize';
 
-import { Button } from '@/components/ui/button';
-import { IconArrowElbow } from '@/components/ui/icons';
+import { IconButton } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { useEnterSubmit } from '@/hooks/use-enter-submit';
 import { type AI } from '@/lib/chat/actions';
@@ -73,13 +73,12 @@ export function PromptForm({ input, setInput }: { input: string; setInput: (valu
           tabIndex={0}
           value={input}
         />
-        <div className="absolute right-0 top-[13px] sm:right-4">
+        <div className="absolute right-4 top-1/2 -translate-y-1/2">
           <Tooltip>
             <TooltipTrigger asChild>
-              <Button disabled={input === ''} size="icon" type="submit">
-                <IconArrowElbow />
-                <span className="sr-only">{'Send message'}</span>
-              </Button>
+              <IconButton className="rounded-full" disabled={input === ''} type="submit">
+                <CornerDownLeftIcon strokeWidth="3" />
+              </IconButton>
             </TooltipTrigger>
             <TooltipContent>{'Send message'}</TooltipContent>
           </Tooltip>

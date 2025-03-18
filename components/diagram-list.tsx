@@ -3,6 +3,8 @@
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 
+import { useTranslations } from 'next-intl';
+
 import { getCCDResult, getCCDTruth, saveCCDResult, saveCCDTruth } from '@/app/actions';
 import {
   diagramCCD,
@@ -14,6 +16,7 @@ import { initialProfile, PatientProfile } from '@/app/api/data/patient-profiles'
 import { sessionInstructions } from '@/app/api/data/session-instruction';
 import { CCDResult, CCDTruth } from '@/lib/types';
 import { CheckboxReactHookFormMultiple } from './diagram-checkbox';
+import { Button } from './ui/button';
 
 // Before
 async function fetchPatientProfile(setPatientProfile: (patientProfile: PatientProfile) => void) {
@@ -63,6 +66,8 @@ export type InputValues = {
 };
 
 export function DiagramList({ userId, chatId }: DiagramListProps) {
+  const t = useTranslations('components.diagramList.data');
+
   const [patientProfile, setPatientProfile] = useState<PatientProfile | null>(initialProfile);
   const [isFetchedPatientProfile, setIsFetchedPatientProfile] = useState(false);
   const [savedCCDTruth, setSavedCCDTruth] = useState<CCDTruth | null>(null);
@@ -340,12 +345,7 @@ export function DiagramList({ userId, chatId }: DiagramListProps) {
         ))}
       </div>
       <div className="flex justify-end p-4">
-        <button
-          className="font-semiboldflex h-[35px] w-[220px] items-center justify-center rounded-md bg-red-500 text-sm font-semibold text-white"
-          onClick={handleSubmit}
-        >
-          {'Submit and review answers'}
-        </button>
+        <Button onClick={handleSubmit}>{t('submitAndReviewAnswers')}</Button>
       </div>
     </div>
   );

@@ -154,7 +154,7 @@ export async function refreshHistory(path: string) {
 }
 
 export async function getMissingKeys() {
-  const keysRequired = ['OPENAI_API_KEY'];
+  const keysRequired = ['AZURE_API_KEY2', 'AZURE_RESOURCE_NAME2'];
   return keysRequired.map((key) => (process.env[key] ? '' : key)).filter((key) => key !== '');
 }
 

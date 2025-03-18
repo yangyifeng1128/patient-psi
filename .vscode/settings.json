@@ -1,4 +1,8 @@
 {
+  "_comment_for_explorer": "// 资源管理器",
+
+  "explorer.confirmDelete": false,
+
   "_comment_for_editor": "// 编辑器",
 
   "editor.codeActionsOnSave": {
@@ -26,7 +30,10 @@
 
   "_comment_for_typescript": "// TypeScript",
 
+  "javascript.updateImportsOnFileMove.enabled": "always",
+
   "typescript.tsdk": "./node_modules/typescript/lib",
+  "typescript.updateImportsOnFileMove.enabled": "always",
 
   "_comment_for_bradlc.vscode-tailwindcss": "// Tailwind",
 
@@ -41,5 +48,13 @@
     ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"],
     ["cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
   ],
-  "tailwindCSS.experimental.configFile": "packages/ui/styles/globals.css"
+  "tailwindCSS.experimental.configFile": "packages/ui/styles/globals.css",
+
+  "_comment_for_Lokalise.i18n-ally": "// i18n",
+
+  "i18n-ally.editor.preferEditor": true,
+  "i18n-ally.enabledFrameworks": ["next-intl"],
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.localesPaths": ["app/messages"],
+  "i18n-ally.pathMatcher": "{locale}/{namespace}.json"
 }

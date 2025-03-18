@@ -1,0 +1,29 @@
+{
+  "app": {
+    "metadata": {
+      "title": "CBTT",
+      "description": ""
+    },
+    "data": {},
+
+    "signin": {
+      "metadata": {
+        "title": "Sign in",
+        "description": ""
+      },
+      "data": {
+        "welcomeBack": "Welcome back"
+      }
+    },
+
+    "signup": {
+      "metadata": {
+        "title": "Sign up",
+        "description": ""
+      },
+      "data": {
+        "createAccount": "Create your account"
+      }
+    }
+  }
+}

@@ -7,6 +7,7 @@ import { IconNextChat, IconSeparator } from '@/components/ui/icons';
 import { UserMenu } from '@/components/user-menu';
 import { Session } from '@/lib/types';
 import { ChatHistory } from './chat-history';
+import { LocaleControlCombobox } from './locale-control';
 import { SidebarMobile } from './sidebar-mobile';
 
 async function UserOrLogin() {
@@ -36,6 +37,7 @@ async function UserOrLogin() {
           </Button>
         )}
       </div>
+      <LocaleControlCombobox />
     </>
   );
 }
