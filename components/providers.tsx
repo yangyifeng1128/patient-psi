@@ -1,17 +1,16 @@
-'use client'
+'use client';
 
-import * as React from 'react'
-import { ThemeProvider as NextThemesProvider } from 'next-themes'
-import { ThemeProviderProps } from 'next-themes/dist/types'
-import { SidebarProvider } from '@/lib/hooks/use-sidebar'
-import { TooltipProvider } from '@/components/ui/tooltip'
+import { ThemeProvider } from 'next-themes';
 
-export function Providers({ children, ...props }: ThemeProviderProps) {
+import { TooltipProvider } from '@/components/ui/tooltip';
+import { SidebarProvider } from '@/lib/hooks/use-sidebar';
+
+export function Providers({ children, ...props }: React.ComponentPropsWithoutRef<typeof ThemeProvider>) {
   return (
-    <NextThemesProvider {...props}>
+    <ThemeProvider {...props}>
       <SidebarProvider>
         <TooltipProvider>{children}</TooltipProvider>
       </SidebarProvider>
-    </NextThemesProvider>
-  )
+    </ThemeProvider>
+  );
 }

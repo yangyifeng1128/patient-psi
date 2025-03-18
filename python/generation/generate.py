@@ -1,11 +1,13 @@
+import argparse
+import json
+import logging
+import os
+
+from dotenv import load_dotenv
 from langchain_core.output_parsers import PydanticOutputParser
 from langchain_openai import ChatOpenAI
+
 from generation.generation_template import GenerationModel
-from dotenv import load_dotenv
-import os
-import json
-import argparse
-import logging
 
 # Load dotenv
 load_dotenv()

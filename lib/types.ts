@@ -1,17 +1,16 @@
-import { Message } from 'ai'
-import type { DefaultSession } from '@/node_modules/.pnpm/@auth+core@0.18.4/node_modules/@auth/core/types';
+import { Message } from 'ai';
 
-export interface Chat extends Record<string, any> {
-  id: string
-  title: string
-  createdAt: Date
-  userId: string
-  path: string
-  messages: Message[]
-  sharePath?: string
+export interface Chat extends Record<string, unknown> {
+  id: string;
+  title: string;
+  createdAt: Date;
+  userId: string;
+  path: string;
+  messages: Message[];
+  sharePath?: string;
 }
 
-export interface CCDResult extends Record<string, any> {
+export interface CCDResult extends Record<string, unknown> {
   userId: string;
   chatId: string;
   createdAt: Date;
@@ -39,7 +38,7 @@ export interface CCDResult extends Record<string, any> {
   behavior: string;
 }
 
-export interface CCDTruth extends Record<string, any> {
+export interface CCDTruth extends Record<string, unknown> {
   userId: string;
   chatId: string;
   createdAt: Date;
@@ -59,24 +58,24 @@ export interface CCDTruth extends Record<string, any> {
 export type ServerActionResult<Result> = Promise<
   | Result
   | {
-    error: string
-  }
->
+      error: string;
+    }
+>;
 
 export interface Session {
   user: {
-    id: string
+    id: string;
     // email: string
-  }
+  };
 }
 
 export interface AuthResult {
-  type: string
-  message: string
+  type: string;
+  message: string;
 }
 
-export interface User extends Record<string, any> {
-  id: string
+export interface User extends Record<string, unknown> {
+  id: string;
   // email: string
   // password: string
   // userId: string

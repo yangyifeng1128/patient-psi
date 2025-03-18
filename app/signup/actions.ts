@@ -1,54 +1,52 @@
-'use server'
+'use server';
 
-import { signIn } from '@/auth'
-import { ResultCode, getStringFromBuffer } from '@/lib/utils'
-import { z } from 'zod'
-import { kv } from '@vercel/kv'
-import { getUser } from '../login/actions'
-import { AuthError } from 'next-auth'
+import { kv } from '@vercel/kv';
+import { AuthError } from 'next-auth';
+import { z } from 'zod';
+
+import { signIn } from '@/auth';
+import { ResultCode } from '@/lib/utils';
+import { getUser } from '../login/actions';
 
 export async function createUser(
-  participantId: string
+  participantId: string,
   // email: string,
   // hashedPassword: string,
   // salt: string
 ) {
   // const existingUser = await getUser(email)
-  const existingUser = await getUser(participantId)
+  const existingUser = await getUser(participantId);
 
   if (existingUser) {
     return {
       type: 'error',
-      resultCode: ResultCode.UserAlreadyExists
-    }
+      resultCode: ResultCode.UserAlreadyExists,
+    };
   } else {
     const user = {
       // id: crypto.randomUUID(),
-      id: participantId
+      id: participantId,
       // email,
       // password: hashedPassword,
       // salt
-    }
+    };
 
     // await kv.hmset(`user:${email}`, user)
-    await kv.hmset(`user:${participantId}`, user)
+    await kv.hmset(`user:${participantId}`, user);
 
     return {
       type: 'success',
-      resultCode: ResultCode.UserCreated
-    }
+      resultCode: ResultCode.UserCreated,
+    };
   }
 }
 
 interface Result {
-  type: string
-  resultCode: ResultCode
+  type: string;
+  resultCode: ResultCode;
 }
 
-export async function signup(
-  _prevState: Result | undefined,
-  formData: FormData
-): Promise<Result | undefined> {
+export async function signup(_prevState: Result | undefined, formData: FormData): Promise<Result | undefined> {
   // const email = formData.get('email') as string
   // const password = formData.get('password') as string
   const participantId = formData.get('participantId') as string;
@@ -57,13 +55,13 @@ export async function signup(
     .object({
       // email: z.string().email(),
       // password: z.string().min(6)
-      participantId: z.string()
+      participantId: z.string(),
     })
     .safeParse({
       // email,
       // password
-      participantId
-    })
+      participantId,
+    });
 
   if (parsedCredentials.success) {
     // const salt = crypto.randomUUID()
@@ -85,36 +83,36 @@ export async function signup(
           // email,
           // password,
           participantId,
-          redirect: false
-        })
+          redirect: false,
+        });
       }
 
-      return result
+      return result;
     } catch (error) {
       if (error instanceof AuthError) {
         switch (error.type) {
           case 'CredentialsSignin':
             return {
               type: 'error',
-              resultCode: ResultCode.InvalidCredentials
-            }
+              resultCode: ResultCode.InvalidCredentials,
+            };
           default:
             return {
               type: 'error',
-              resultCode: ResultCode.UnknownError
-            }
+              resultCode: ResultCode.UnknownError,
+            };
         }
       } else {
         return {
           type: 'error',
-          resultCode: ResultCode.UnknownError
-        }
+          resultCode: ResultCode.UnknownError,
+        };
       }
     }
   } else {
     return {
       type: 'error',
-      resultCode: ResultCode.InvalidCredentials
-    }
+      resultCode: ResultCode.InvalidCredentials,
+    };
   }
 }

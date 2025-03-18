@@ -1,60 +1,57 @@
-import { type Metadata } from 'next'
-import { notFound, redirect } from 'next/navigation'
+import { type Metadata } from 'next';
+import { notFound, redirect } from 'next/navigation';
 
-import { auth } from '@/auth'
-import { getChat, getMissingKeys } from '@/app/actions'
-import { Chat } from '@/components/chat'
-import { AI } from '@/lib/chat/actions'
-import { Session } from '@/lib/types'
+import { getChat, getMissingKeys } from '@/app/actions';
+import { auth } from '@/auth';
+import { Chat } from '@/components/chat';
+import { AI } from '@/lib/chat/actions';
+import { Session } from '@/lib/types';
 
 export interface ChatPageProps {
   params: {
-    id: string
-  }
+    id: string;
+  };
 }
 
-export async function generateMetadata({
-  params
-}: ChatPageProps): Promise<Metadata> {
-  const session = await auth()
+export async function generateMetadata({ params }: ChatPageProps): Promise<Metadata> {
+  const { id } = await params;
 
-  if (!session?.user) {
-    return {}
+  const session = await auth();
+  const userId = session?.user?.id;
+
+  if (!userId) {
+    return {};
   }
 
-  const chat = await getChat(params.id, session.user.id)
+  const chat = await getChat(id, userId);
   return {
-    title: chat?.title.toString().slice(0, 50) ?? 'Chat'
-  }
+    title: chat?.title.toString().slice(0, 50) ?? 'Chat',
+  };
 }
 
 export default async function ChatPage({ params }: ChatPageProps) {
-  const session = (await auth()) as Session
-  const missingKeys = await getMissingKeys()
+  const { id } = await params;
+  const session = (await auth()) as Session;
+  const missingKeys = await getMissingKeys();
 
   if (!session?.user) {
-    redirect(`/login?next=/chat/${params.id}`)
+    redirect(`/login?next=/chat/${id}`);
   }
 
-  const userId = session.user.id as string
-  const chat = await getChat(params.id, userId)
+  const userId = session.user.id as string;
+  const chat = await getChat(id, userId);
 
   if (!chat) {
-    redirect('/')
+    redirect('/');
   }
 
   if (chat?.userId !== session?.user?.id) {
-    notFound()
+    notFound();
   }
 
   return (
     <AI initialAIState={{ chatId: chat.id, messages: chat.messages }}>
-      <Chat
-        id={chat.id}
-        session={session}
-        initialMessages={chat.messages}
-        missingKeys={missingKeys}
-      />
+      <Chat id={chat.id} initialMessages={chat.messages} missingKeys={missingKeys} session={session} />
     </AI>
-  )
+  );
 }
