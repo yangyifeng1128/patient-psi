@@ -1,6 +1,6 @@
 import 'server-only';
 
-import { createAzure } from '@ai-sdk/azure';
+import { azure } from '@ai-sdk/azure';
 import { createAI, createStreamableValue, getAIState, getMutableAIState, streamUI } from 'ai/rsc';
 
 import { saveChat } from '@/app/actions';
@@ -9,15 +9,6 @@ import { auth } from '@/auth';
 import { BotMessage, SpinnerMessage, UserMessage } from '@/components/message';
 import { Chat } from '@/lib/types';
 import { nanoid } from '@/lib/utils';
-
-// const openai = new OpenAI({
-//   apiKey: process.env.OPENAI_API_KEY || '',
-// });
-
-const azure = createAzure({
-  resourceName: 'aixinquegpt4',
-  apiKey: 'ef0f7cbdc8fc47afbb20f7a9c54c8f21',
-});
 
 async function submitUserMessage(content: string) {
   'use server';
