@@ -10,24 +10,18 @@ import { formatDate } from '@/lib/utils';
 export const runtime = 'edge';
 export const preferredRegion = 'home';
 
-interface SharePageProps {
-  params: {
-    id: string;
-  };
-}
-
-export async function generateMetadata({ params }: SharePageProps): Promise<Metadata> {
-  const { id } = await params;
-  const chat = await getSharedChat(id);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const chat = await getSharedChat(slug);
 
   return {
     title: chat?.title.slice(0, 50) ?? 'Chat',
   };
 }
 
-export default async function SharePage({ params }: SharePageProps) {
-  const { id } = await params;
-  const chat = await getSharedChat(id);
+export default async function SharePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const chat = await getSharedChat(slug);
 
   if (!chat || !chat?.sharePath) {
     notFound();
