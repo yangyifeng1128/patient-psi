@@ -29,12 +29,12 @@ export function PromptForm({ input, setInput }: { input: string; setInput: (valu
 
   return (
     <form
-      onSubmit={async (e: React.FormEvent) => {
+      onSubmit={async (e) => {
         e.preventDefault();
 
         // Blur focus on mobile
         if (window.innerWidth < 600) {
-          e.target['message']?.blur();
+          (e.target as HTMLFormElement)['message']?.blur();
         }
 
         const value = input.trim();

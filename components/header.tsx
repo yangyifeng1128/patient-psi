@@ -1,16 +1,16 @@
-import Link from 'next/link'
-import * as React from 'react'
+import * as React from 'react';
+import Link from 'next/link';
 
-import { auth } from '@/auth'
-import { Button } from '@/components/ui/button'
-import { IconNextChat, IconSeparator } from '@/components/ui/icons'
-import { UserMenu } from '@/components/user-menu'
-import { Session } from '@/lib/types'
-import { ChatHistory } from './chat-history'
-import { SidebarMobile } from './sidebar-mobile'
+import { auth } from '@/auth';
+import { Button } from '@/components/ui/button';
+import { IconNextChat, IconSeparator } from '@/components/ui/icons';
+import { UserMenu } from '@/components/user-menu';
+import { Session } from '@/lib/types';
+import { ChatHistory } from './chat-history';
+import { SidebarMobile } from './sidebar-mobile';
 
 async function UserOrLogin() {
-  const session = (await auth()) as Session
+  const session = (await auth()) as Session;
   return (
     <>
       {session?.user ? (
@@ -22,8 +22,8 @@ async function UserOrLogin() {
         </>
       ) : (
         <Link href="/new" rel="nofollow">
-          <IconNextChat className="size-6 mr-2 dark:hidden" inverted />
-          <IconNextChat className="hidden size-6 mr-2 dark:block" />
+          <IconNextChat className="mr-2 size-6 dark:hidden" inverted />
+          <IconNextChat className="mr-2 hidden size-6 dark:block" />
         </Link>
       )}
       <div className="flex items-center">
@@ -31,18 +31,18 @@ async function UserOrLogin() {
         {session?.user ? (
           <UserMenu user={session.user} />
         ) : (
-          <Button variant="link" asChild className="-ml-2">
-            <Link href="/login">Login</Link>
+          <Button asChild className="-ml-2" variant="link">
+            <Link href="/login">{'Login'}</Link>
           </Button>
         )}
       </div>
     </>
-  )
+  );
 }
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 flex items-center justify-between w-full h-16 px-4 border-b shrink-0 bg-gradient-to-b from-background/10 via-background/50 to-background/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 flex h-16 w-full shrink-0 items-center justify-between border-b bg-gradient-to-b from-background/10 via-background/50 to-background/80 px-4 backdrop-blur-xl">
       <div className="flex items-center">
         <React.Suspense fallback={<div className="flex-1 overflow-auto" />}>
           <UserOrLogin />
@@ -72,5 +72,5 @@ export function Header() {
         </SidebarMobile> */}
       </div>
     </header>
-  )
+  );
 }

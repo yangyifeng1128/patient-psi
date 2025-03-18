@@ -29,11 +29,11 @@ export default function LoginForm() {
   return (
     <form action={dispatch} className="flex flex-col items-center gap-4 space-y-3">
       <div className="w-full flex-1 rounded-lg border bg-white px-6 pb-4 pt-8 shadow-md dark:bg-zinc-950 md:w-96">
-        <h1 className="mb-3 text-2xl font-bold">Please log in with your assigned Participant ID.</h1>
+        <h1 className="mb-3 text-2xl font-bold">{'Please log in with your assigned Participant ID.'}</h1>
         <div className="w-full">
           <div>
             <label className="mb-3 mt-5 block text-xs font-medium text-zinc-400" htmlFor="participantId">
-              Participant ID
+              {'Participant ID'}
             </label>
             <div className="relative">
               <input
@@ -51,7 +51,8 @@ export default function LoginForm() {
       </div>
 
       <Link className="flex flex-row gap-1 text-sm text-zinc-400" href="/signup">
-        No account yet? <div className="font-semibold underline">Sign up</div>
+        {'No account yet? '}
+        <div className="font-semibold underline">{'Sign up'}</div>
       </Link>
     </form>
   );

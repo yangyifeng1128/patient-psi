@@ -1,15 +1,16 @@
-'use client'
+'use client';
 
-import { signIn } from 'next-auth/react'
-import * as React from 'react'
+import * as React from 'react';
 
-import { Button, type ButtonProps } from '@/components/ui/button'
-import { IconGitHub, IconSpinner } from '@/components/ui/icons'
-import { cn } from '@/lib/utils'
+import { signIn } from 'next-auth/react';
+
+import { Button, type ButtonProps } from '@/components/ui/button';
+import { IconGitHub, IconSpinner } from '@/components/ui/icons';
+import { cn } from '@/lib/utils';
 
 interface LoginButtonProps extends ButtonProps {
-  showGithubIcon?: boolean
-  text?: string
+  showGithubIcon?: boolean;
+  text?: string;
 }
 
 export function LoginButton({
@@ -18,17 +19,17 @@ export function LoginButton({
   className,
   ...props
 }: LoginButtonProps) {
-  const [isLoading, setIsLoading] = React.useState(false)
+  const [isLoading, setIsLoading] = React.useState(false);
   return (
     <Button
-      variant="outline"
-      onClick={() => {
-        setIsLoading(true)
-        // next-auth signIn() function doesn't work yet at Edge Runtime due to usage of BroadcastChannel
-        signIn('github', { callbackUrl: `/` })
-      }}
-      disabled={isLoading}
       className={cn(className)}
+      disabled={isLoading}
+      onClick={() => {
+        setIsLoading(true);
+        // next-auth signIn() function doesn't work yet at Edge Runtime due to usage of BroadcastChannel
+        signIn('github', { callbackUrl: `/` });
+      }}
+      variant="outline"
       {...props}
     >
       {isLoading ? (
@@ -38,5 +39,5 @@ export function LoginButton({
       ) : null}
       {text}
     </Button>
-  )
+  );
 }

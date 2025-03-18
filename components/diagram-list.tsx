@@ -101,7 +101,10 @@ export function DiagramList({ userId, chatId }: DiagramListProps) {
         setSavedCCDResult(savedResult);
         setInputValues((prevValues) => ({
           ...prevValues,
-          ...savedResult,
+          ...Object.keys(savedResult).reduce((acc, key) => {
+            acc[key] = savedResult[key] as string | { id: string; label: string }[];
+            return acc;
+          }, {} as InputValues),
         }));
         console.log('show previous ccdresult');
       }
@@ -203,6 +206,10 @@ export function DiagramList({ userId, chatId }: DiagramListProps) {
     }
   };
 
+  if (!savedCCDTruth) {
+    return false;
+  }
+
   return (
     <div className="flex h-full flex-col">
       <div className="flex items-center justify-between p-4 px-5">
@@ -269,7 +276,7 @@ export function DiagramList({ userId, chatId }: DiagramListProps) {
                 {isSubmitted && (
                   <label className="block pt-1 font-medium leading-normal text-blue-600" key={name}>
                     <span className="font-bold">{'Reference: '}</span>
-                    {savedCCDTruth?.[name]}
+                    {savedCCDTruth?.[name] as string}
                   </label>
                 )}
               </div>
@@ -299,10 +306,10 @@ export function DiagramList({ userId, chatId }: DiagramListProps) {
                     {isSubmitted && (
                       <label className="block font-medium leading-normal text-blue-600">
                         <span className="font-bold">{'Reference:'}</span>
-                        {savedCCDTruth?.[category]?.length === 0 ? (
+                        {(savedCCDTruth?.[category] as string[])?.length === 0 ? (
                           <div className="pt-1 leading-normal text-blue-600">{'not chosen'}</div>
                         ) : (
-                          savedCCDTruth?.[category]?.map((item: string, index: number) => (
+                          (savedCCDTruth?.[category] as string[])?.map((item: string, index: number) => (
                             <div className="pt-1 leading-normal text-blue-600" key={index}>
                               {item}
                             </div>
@@ -324,7 +331,7 @@ export function DiagramList({ userId, chatId }: DiagramListProps) {
                 {isSubmitted && (
                   <label className="block pt-1 font-medium leading-normal text-blue-600" key={name}>
                     <span className="font-bold">{'Reference: '}</span>
-                    {savedCCDTruth?.[name]}
+                    {savedCCDTruth?.[name] as string}
                   </label>
                 )}
               </div>
