@@ -4,25 +4,18 @@ import * as React from 'react';
 
 import { signIn } from 'next-auth/react';
 
-import { Button, type ButtonProps } from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { IconGitHub, IconSpinner } from '@/components/ui/icons';
-import { cn } from '@/lib/utils';
 
-interface LoginButtonProps extends ButtonProps {
+type LoginButtonProps = React.ComponentPropsWithRef<typeof Button> & {
   showGithubIcon?: boolean;
   text?: string;
-}
+};
 
-export function LoginButton({
-  text = 'Login with GitHub',
-  showGithubIcon = true,
-  className,
-  ...props
-}: LoginButtonProps) {
+export function LoginButton({ text = 'Login with GitHub', showGithubIcon = true, ...props }: LoginButtonProps) {
   const [isLoading, setIsLoading] = React.useState(false);
   return (
     <Button
-      className={cn(className)}
       disabled={isLoading}
       onClick={() => {
         setIsLoading(true);

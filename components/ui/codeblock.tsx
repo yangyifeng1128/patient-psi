@@ -8,7 +8,7 @@ import { FC, memo } from 'react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coldarkDark } from 'react-syntax-highlighter/dist/cjs/styles/prism';
 
-import { Button } from '@/components/ui/button';
+import { IconButton } from '@/components/ui/button';
 import { IconCheck, IconCopy, IconDownload } from '@/components/ui/icons';
 import { useCopyToClipboard } from '@/hooks/use-copy-to-clipboard';
 
@@ -95,24 +95,22 @@ const CodeBlock: FC<Props> = memo(({ language, value }) => {
       <div className="flex w-full items-center justify-between bg-zinc-800 px-6 py-2 pr-4 text-zinc-100">
         <span className="text-xs lowercase">{language}</span>
         <div className="flex items-center space-x-1">
-          <Button
+          <IconButton
             className="hover:bg-zinc-800 focus-visible:ring-1 focus-visible:ring-slate-700 focus-visible:ring-offset-0"
             onClick={downloadAsFile}
-            size="icon"
             variant="ghost"
           >
             <IconDownload />
             <span className="sr-only">{'Download'}</span>
-          </Button>
-          <Button
+          </IconButton>
+          <IconButton
             className="text-xs hover:bg-zinc-800 focus-visible:ring-1 focus-visible:ring-slate-700 focus-visible:ring-offset-0"
             onClick={onCopy}
-            size="icon"
             variant="ghost"
           >
             {isCopied ? <IconCheck /> : <IconCopy />}
             <span className="sr-only">{'Copy code'}</span>
-          </Button>
+          </IconButton>
         </div>
       </div>
       <SyntaxHighlighter

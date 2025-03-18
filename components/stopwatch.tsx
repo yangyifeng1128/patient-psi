@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
-import { Button } from '@/components/ui/button';
+import { IconButton } from '@/components/ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 
 export const Stopwatch = () => {
@@ -42,17 +42,14 @@ export const Stopwatch = () => {
   return (
     <Tooltip>
       <TooltipTrigger asChild>
-        <Button
+        <IconButton
           className="absolute left-0 top-[7px] size-12 rounded-full bg-background p-0 sm:left-2"
-          size="icon"
           variant="outline"
         >
           <span className="absolute inset-0 flex items-center justify-center text-sm text-zinc-400">
             {formatTime(elapsedTime)}
           </span>
-          {/* <IconPlus /> */}
-          <span className="sr-only">{'Stopwatch'}</span>
-        </Button>
+        </IconButton>
       </TooltipTrigger>
       <TooltipContent>{'Stopwatch'}</TooltipContent>
     </Tooltip>
