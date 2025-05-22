@@ -3,13 +3,11 @@ export const diagramDescriptionMapping: { [key: string]: string } = {
     'Please capture important background information about the client, such as significant life events or circumstances that may have contributed to their current mental state or behavior.',
   coreBelief:
     'Please select any core beliefs that match the your understanding of the client under the following three categories: Hopeless, Unlovable, and Worthless Core beliefs.',
-  intermediateBelief:
-    "Please identify the client's intermediate beliefs that influence their perception of themselves, others, and the world around them.",
+  intermediateBelief: '请描述影响员工对自己、他人和周围世界的看法的中间信念',
   intermediateBeliefDepression:
     "Please identify how the client's intermediate beliefs change and become more negative during episodes of depression, if applicable",
-  copingStrategies: "Please describe the client's coping strategies in managing the emotions",
-  situation:
-    'Please record the specific situation or trigger that the client recently encountered, which led to negative automatic thoughts and emotional distress.',
+  copingStrategies: '请描述员工管理情绪的应对策略',
+  situation: '请记录来访者近期遇到的导致消极自动思维和情绪困扰的具体情况或触发因素。',
   autoThought:
     "Please record the client's immediate, unfiltered thoughts that arise in response to the identified situation.",
   emotion:
@@ -19,15 +17,15 @@ export const diagramDescriptionMapping: { [key: string]: string } = {
 };
 
 export const diagramTitleMapping: { [key: string]: string } = {
-  relatedHistory: 'Relevant History',
-  coreBelief: 'Core Belief(s)',
-  intermediateBelief: 'Intermediate Belief(s)',
-  intermediateBeliefDepression: 'Intermediate Belief (s) During Depression',
-  copingStrategies: 'Coping Strategies',
-  situation: 'The Situation',
-  autoThought: 'Automatic Thoughts(s)',
-  emotion: 'Emotion(s)',
-  behavior: 'Behavior(s)',
+  relatedHistory: '过往经历',
+  coreBelief: '核心信念',
+  intermediateBelief: '中间信念',
+  intermediateBeliefDepression: '抑郁期间的中间信念',
+  copingStrategies: '应对策略',
+  situation: '处境',
+  autoThought: '自动思维',
+  emotion: '情绪',
+  behavior: '行为',
 };
 
 export const diagramRelated: string[] = ['coreBelief', 'intermediateBelief', 'copingStrategies'];

@@ -101,25 +101,23 @@ export function Chat({ id, className, session }: ChatProps) {
                 <div className={cn('pb-[200px] pt-4 md:pt-10', className)} ref={messagesRef}>
                   <div className="mx-auto max-w-2xl px-4">
                     <div className="flex flex-col gap-2 rounded-lg border bg-background p-8">
-                      <h1 className="text-xl font-semibold">{'New Session Begins'}</h1>
+                      <h1 className="text-xl font-semibold">{'开启新的对话'}</h1>
                       <label className="pt-4 text-lg font-semibold leading-normal text-blue-600">
-                        {'Relevant history of '}
                         {patientProfile.name}
-                        {':'}
+                        {' 的过往经历'}
+                        {'：'}
                       </label>
                       <p className="pt-2 font-medium leading-normal text-blue-600">{patientProfile.history}</p>
                       <p className="pt-1 font-light leading-normal text-black dark:text-white">
-                        {'(The relevant history will be shown in the right column throughout the session)'}
+                        {'（过往经历将在整个对话期间显示在右侧边栏中）'}
                       </p>
                       <p className="pt-4 font-medium leading-normal text-black dark:text-white">
-                        {'Now you may start your session with client '}
+                        {'请在下面的文本框中输入对 '}
                         <b>{patientProfile.name}</b>
-                        {'. Please start the session by entering the first greeting to '}
-                        <b>{patientProfile.name}</b>
-                        {' in the textbox below.'}
+                        {' 的问候语，开始会话。'}
                       </p>
                       <label className="block pt-1 font-medium leading-normal text-red-500">
-                        <span className="font-bold">{'The expected time of the session is around 10 minutes.'}</span>
+                        <span className="font-bold">{'预计对话时间约为 10 分钟。'}</span>
                       </label>
                     </div>
                   </div>

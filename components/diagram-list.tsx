@@ -218,12 +218,12 @@ export function DiagramList({ userId, chatId }: DiagramListProps) {
   return (
     <div className="flex h-full flex-col">
       <div className="flex items-center justify-between p-4 px-5">
-        <h4 className="text-lg font-bold">{'Patient Intake and Cognitive Conceptualization Diagram'}</h4>
+        <h4 className="text-lg font-bold">{'心理困扰员工初始访谈与认知概念图'}</h4>
       </div>
       <div className="mb-2 space-y-6 overflow-auto px-5">
         <label className="block pt-1 font-medium leading-normal">
           <span className="font-bold">
-            {'Patient Type: '}
+            {'员工类型：'}
             {patientType}
           </span>
         </label>
@@ -235,10 +235,10 @@ export function DiagramList({ userId, chatId }: DiagramListProps) {
         </div>
         <p className="font-medium leading-normal text-blue-600">{savedCCDTruth?.relatedHistory}</p>
         <label className="block pt-1 font-medium leading-normal text-red-500">
-          <span className="font-bold">{'The expected time of the session is around 10 minutes.'}</span>
+          <span className="font-bold">{'预计对话时间约为 10 分钟。'}</span>
         </label>
         <label className="block pt-1 font-medium leading-normal">
-          <span className="font-bold">{'Instructions: '}</span>
+          <span className="font-bold">{'指导语：'}</span>
           {sessionInstructions['ccd-situation']}
         </label>
         {diagramCCD.map((name) => (
@@ -259,7 +259,7 @@ export function DiagramList({ userId, chatId }: DiagramListProps) {
                     />
                     {isSubmitted && (
                       <label className="block font-medium leading-normal text-blue-600">
-                        <span className="font-bold">{'Reference:'}</span>
+                        <span className="font-bold">{'参考描述：'}</span>
                         {savedCCDTruth?.['Emotion']?.map((item: string, index: number) => (
                           <div className="pt-1 leading-normal text-blue-600" key={index}>
                             {item}
@@ -280,7 +280,7 @@ export function DiagramList({ userId, chatId }: DiagramListProps) {
 
                 {isSubmitted && (
                   <label className="block pt-1 font-medium leading-normal text-blue-600" key={name}>
-                    <span className="font-bold">{'Reference: '}</span>
+                    <span className="font-bold">{'参考描述： '}</span>
                     {savedCCDTruth?.[name] as string}
                   </label>
                 )}
@@ -290,7 +290,7 @@ export function DiagramList({ userId, chatId }: DiagramListProps) {
         ))}
         <hr className="my-4 border-gray-300" />
         <label className="block pt-4 font-medium leading-normal">
-          <span className="font-bold">{'Instructions: '}</span> {sessionInstructions['ccd']}
+          <span className="font-bold">{'指导语：'}</span> {sessionInstructions['ccd']}
         </label>
         {diagramRelated.map((name) => (
           <div key={name}>
@@ -310,7 +310,7 @@ export function DiagramList({ userId, chatId }: DiagramListProps) {
                     />
                     {isSubmitted && (
                       <label className="block font-medium leading-normal text-blue-600">
-                        <span className="font-bold">{'Reference:'}</span>
+                        <span className="font-bold">{'参考描述：'}</span>
                         {(savedCCDTruth?.[category] as string[])?.length === 0 ? (
                           <div className="pt-1 leading-normal text-blue-600">{'not chosen'}</div>
                         ) : (
@@ -335,7 +335,7 @@ export function DiagramList({ userId, chatId }: DiagramListProps) {
 
                 {isSubmitted && (
                   <label className="block pt-1 font-medium leading-normal text-blue-600" key={name}>
-                    <span className="font-bold">{'Reference: '}</span>
+                    <span className="font-bold">{'参考描述： '}</span>
                     {savedCCDTruth?.[name] as string}
                   </label>
                 )}

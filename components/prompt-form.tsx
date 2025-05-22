@@ -66,7 +66,7 @@ export function PromptForm({ input, setInput }: { input: string; setInput: (valu
           name="message"
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={onKeyDown}
-          placeholder="Send a message."
+          placeholder="发送消息"
           ref={inputRef}
           rows={1}
           spellCheck={false}

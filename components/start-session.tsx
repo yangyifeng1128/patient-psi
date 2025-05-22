@@ -48,7 +48,7 @@ export function StartSession({ onStartedChange, onSetPatientProfile }: StartSess
   return (
     <div className="mx-auto max-w-2xl px-4">
       <div className="flex flex-col gap-2 rounded-lg border bg-background p-8">
-        <h1 className="text-xl font-semibold">{'CBT session with a simulated client powered by AI'}</h1>
+        <h1 className="text-xl font-semibold">{'AI员工心理援助教练'}</h1>
         <PatientTypeMenu
           onSetPatientProfile={handleSetdPatientProfile}
           onStartedChange={handleStartedChange}

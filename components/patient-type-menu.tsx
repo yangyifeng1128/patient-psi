@@ -85,7 +85,7 @@ export function PatientTypeMenu({ onStartedChange, onSetPatientProfile }: Patien
 
   const patientTypeListValues: string[] = patientTypes.map(({ type }) => type);
 
-  const [selectedType, setSelectedType] = useState('Client Types');
+  const [selectedType, setSelectedType] = useState('员工类型');
   const [selectedTypeDescription, setSelectedTypeDescription] = useState('');
   const [isStarted, setIsStarted] = useState(false);
   const [patientProfile, setPatientProfile] = useState<PatientProfile>(initialProfile);
@@ -139,18 +139,22 @@ export function PatientTypeMenu({ onStartedChange, onSetPatientProfile }: Patien
         <div>
           <p className="pt-4 font-medium leading-normal text-zinc-500">
             {
-              'In this CBT session, you will talk to a client simulated by AI with a virtual patient profile. You goal is to indentify the cognitive conceptualization diagram of the client by communicating with them and using CBT skills.'
+              '本产品是一款与AI模拟的心理困扰员工进行CBT认知行为疗法对话的实训平台，以帮助企业EAP从业者更好地开展心理援助工作。'
             }
           </p>
-
           <p className="pt-4 font-medium leading-normal text-zinc-500">
             {
-              'We provide 5 typical client types and one plain client without any types. Please select a patient type to see the description.'
+              '在对话过程中，您将与一位由AI模拟的、拥有虚拟人设的员工进行交谈。您的目标是通过与员工沟通并运用CBT认知行为疗法技能，识别员工的认知概念图。'
+            }
+          </p>
+          <p className="pt-4 font-medium leading-normal text-zinc-500">
+            {
+              '我们提供了6种典型的员工类型，分别是：直白型、易怒/抵触型、话多/滔滔不绝型、拘谨/惜字如金型、容易跑题型、过度迎合/取悦型。'
             }
           </p>
           <div className="max-w-6xl px-0">
             <div>
-              <label className="block pt-4 text-sm font-medium leading-6">{'Please select a client type'}</label>
+              <label className="block pt-4 text-sm font-medium leading-6">{'请选择一种员工类型'}</label>
               <div className="flex items-center justify-start">
                 <div>
                   <PatientTypeDropdownList

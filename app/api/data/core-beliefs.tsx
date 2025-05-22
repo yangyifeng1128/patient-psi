@@ -1,7 +1,7 @@
 export const helplessBeliefItems = [
   {
     id: 'incompetent',
-    label: 'I am incompetent.',
+    label: '我很无能。',
   },
   {
     id: 'helpless',
